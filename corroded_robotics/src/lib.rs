@@ -7,6 +7,9 @@ extern crate ndarray as nd;
     /// 
     /// * `value` - a f64 value
     /// 
+    /// # Returns:
+    /// 
+    /// * `bool` - true or false
     pub fn near_zero(value : f64) -> bool {
         return value.abs() < 0.000001;
     }
@@ -25,7 +28,6 @@ extern crate ndarray as nd;
 
     pub fn so3_to_vec(so3mat : na::Matrix3<f64>) -> na::Vector3<f64> {
         //how the hell does array indexing work? Am reading nalgebra repo and can't find anything
-        so3mat.
         let vec = vec![so3mat(2, 1), so3mat(0, 2), so3mat(1, 0)];
         return vec;
     }
@@ -36,23 +38,21 @@ extern crate ndarray as nd;
 
 
 
-//     pub fn so3_to_vec(so3mat :: na::Matrix3x3<f64>) -> na::Vector3<f64> {
-//         //figure out how array indexing works exactly
-//         let vec = vec![so3mat(2, 1), so3mat(0, 2), so3mat(1, 0)];
-//     }
 
-//     function MatrixExp3(so3mat:: na::Matrix3x3<f64>)  {
-//     let omgtheta = so3_to_vec(so3mat);
-//     if near_zero(omgtheta.norm())
-//         return linalg.I //return identity matrix
-//     else
-//         θ = AxisAng3(omgtheta)[2]
-//         omgmat = so3mat / θ
-//         return linalg.I + sin(θ) * omgmat + (1 - cos(θ)) * omgmat * omgmat
-//     end
-// end
-//     }
-// }
+///Computes the matrix exponential of a matrix in so(3).
+///
+/// 
+pub fn matrix_to_exp3(so3mat: na::Matrix3<f64>) {
+    let omgtheta = so3_to_vec(so3mat);
+    if (near_zero(omgtheta.norm()) {
+        //return the identity matrix of the same size as omgtheta
+    }
+    else {
+        theta = AxisAng3(omgtheta)[2];
+        omgmat = so3mat / theta;
+        return linalg.I + sin(theta) * omgmat + (1 - cos(theta)) * omgmat * omgmat;
+    }
+}
 
 
     #[test]
