@@ -44,13 +44,13 @@ extern crate ndarray as nd;
 /// 
 pub fn matrix_to_exp3(so3mat: na::Matrix3<f64>) {
     let omgtheta = so3_to_vec(so3mat);
-    if (near_zero(omgtheta.norm()) {
+    if near_zero(omgtheta.norm()) {
         //return the identity matrix of the same size as omgtheta
     }
     else {
-        theta = AxisAng3(omgtheta)[2];
-        omgmat = so3mat / theta;
-        return linalg.I + sin(theta) * omgmat + (1 - cos(theta)) * omgmat * omgmat;
+        let theta = axis_to_angle3(omgtheta)[2];
+        let omgmat = so3mat / theta;
+        //return linalg.I + sin(theta) * omgmat + (1 - cos(theta)) * omgmat * omgmat;
     }
 }
 
